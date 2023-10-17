@@ -5,18 +5,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.example.starapplication.Services.StarService;
 import com.example.starapplication.entities.Star;
 import com.example.starapplication.Adapter.starAdapter;
-import com.example.starapplication.Services.StarService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class MainActivity extends AppCompatActivity  {
 
     private List<Star> stars;
+    private SearchView searchView;
     private StarService service;
     private RecyclerView recyclerView;
     private starAdapter starAdapter = null;
@@ -24,21 +27,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         stars = new ArrayList<>();
         service =  StarService.getInstance();
         init();
         recyclerView = findViewById(R.id.recyclerView);
+
         starAdapter starAdapter = null;
         starAdapter = new starAdapter(this, service.findAll());
         recyclerView.setAdapter(starAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
     }
+
+
     public void init(){
 
-        service.create(new Star("leeuw med", "https://images.unsplash.com/photo-1577880216142-8549e9488dad?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=MnwxfDB8MXxyYW5kb218MHx8bWFufHx8fHx8MTY5NzQwMDYxOA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=300", 4));
-        service.create(new Star("george clooney", "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHx8bWFufHx8fHx8MTY5NzQwMDMzMQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=300", 3));
+        service.create(new Star("Leo Messi", "https://media.gettyimages.com/id/1339359625/fr/photo/lionel-messi-of-argentina-celebrates-after-scoring-the-opening-goal-during-a-match-between.jpg?s=2048x2048&w=gi&k=20&c=1SxpNp6YKTkjC1qcJAw4ivLM6VpFQ0K-5xQqivXHQzE=", 3));
+
+        service.create(new Star("Cristiano Ronaldo", "https://media.gettyimages.com/id/1339671524/fr/photo/cristiano-ronaldo-of-manchester-united-looks-on-during-the-premier-league-match-between.jpg?s=2048x2048&w=gi&k=20&c=oIR1oz_4AbxklriqlHQ56Lyf8uCiViZzew04UzpMnCw=", 4));
+        service.create(new Star("Karim Benzema", "https://media.gettyimages.com/id/1363505322/fr/photo/karim-benzema-of-real-madrid-cf-celebrates-after-scoring-his-teams-fourth-goal-during-the-la.jpg?s=2048x2048&w=gi&k=20&c=wP0NqD3lhGqP0YRIYwZd4zP8aEXd7uNdOgPUfotFqEM=", 3));
+        service.create(new Star("Leo Messi", "https://media.gettyimages.com/id/1339359625/fr/photo/lionel-messi-of-argentina-celebrates-after-scoring-the-opening-goal-during-a-match-between.jpg?s=2048x2048&w=gi&k=20&c=1SxpNp6YKTkjC1qcJAw4ivLM6VpFQ0K-5xQqivXHQzE=", 3));
+
+        service.create(new Star("Cristiano Ronaldo", "https://media.gettyimages.com/id/1339671524/fr/photo/cristiano-ronaldo-of-manchester-united-looks-on-during-the-premier-league-match-between.jpg?s=2048x2048&w=gi&k=20&c=oIR1oz_4AbxklriqlHQ56Lyf8uCiViZzew04UzpMnCw=", 4));
+        service.create(new Star("Karim Benzema", "https://media.gettyimages.com/id/1363505322/fr/photo/karim-benzema-of-real-madrid-cf-celebrates-after-scoring-his-teams-fourth-goal-during-the-la.jpg?s=2048x2048&w=gi&k=20&c=wP0NqD3lhGqP0YRIYwZd4zP8aEXd7uNdOgPUfotFqEM=", 3));
+        service.create(new Star("Leo Messi", "https://media.gettyimages.com/id/1339359625/fr/photo/lionel-messi-of-argentina-celebrates-after-scoring-the-opening-goal-during-a-match-between.jpg?s=2048x2048&w=gi&k=20&c=1SxpNp6YKTkjC1qcJAw4ivLM6VpFQ0K-5xQqivXHQzE=", 3));
+
+        service.create(new Star("Cristiano Ronaldo", "https://media.gettyimages.com/id/1339671524/fr/photo/cristiano-ronaldo-of-manchester-united-looks-on-during-the-premier-league-match-between.jpg?s=2048x2048&w=gi&k=20&c=oIR1oz_4AbxklriqlHQ56Lyf8uCiViZzew04UzpMnCw=", 4));
+        service.create(new Star("Karim Benzema", "https://media.gettyimages.com/id/1363505322/fr/photo/karim-benzema-of-real-madrid-cf-celebrates-after-scoring-his-teams-fourth-goal-during-the-la.jpg?s=2048x2048&w=gi&k=20&c=wP0NqD3lhGqP0YRIYwZd4zP8aEXd7uNdOgPUfotFqEM=", 3));
+
+
 
 
 

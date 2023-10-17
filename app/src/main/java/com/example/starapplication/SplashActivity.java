@@ -20,11 +20,11 @@ public class SplashActivity extends AppCompatActivity {
 
         image = findViewById(R.id.imageAnime);
         image.setImageResource(R.drawable.starrouge);
-        RotateAnimation anim = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        anim.setInterpolator(new LinearInterpolator());
-        anim.setRepeatCount(Animation.INFINITE);
-        anim.setDuration(1000);
-        image.startAnimation(anim);
+
+        image.animate().rotation(360f).setDuration(2000);
+        image.animate().scaleX(0.5f).scaleY(0.5f).setDuration(3000);
+        image.animate().translationYBy(1000f).setDuration(2000);
+        image.animate().alpha(0f).setDuration(6000);
 
 
 
@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(0);
+                    sleep(000);
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
                     SplashActivity.this.finish();
